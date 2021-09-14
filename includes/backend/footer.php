@@ -105,11 +105,18 @@
         $('#item'+p_id+'_qty').attr('max', v);
         var final_amount = $('#final_total_amt').text();
         var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
+        var item_vat = 7.5/100 * total_item_amount;
+        result_amount = parseFloat(result_amount) - parseFloat(item_vat);
         $('#final_total_amt').text(result_amount);
+        // $('#vat_services').val();
         $('#row_'+row_id).remove();
-        count--;
+        alert(count);
+        // loop through cart and increment counter
+        // count--;
+        alert(count);
         $('#print_div').find('#row_'+row_id).remove();
         $('#print_div').find('#r_final_total_amt').text(result_amount);
+        cal_final_total(count);
         //$('#total_item').val(count);
       });
 
@@ -189,7 +196,7 @@
             }
           }
         }
-        var vat_services = 10/100 * final_item_total;
+        var vat_services = 7.5/100 * final_item_total;
         var grand_total = parseFloat(final_item_total) + parseFloat(vat_services);
         $('#final_total_amt').text(final_item_total);
         $('#r_final_total_amt').text(final_item_total);
